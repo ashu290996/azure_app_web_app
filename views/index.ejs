@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🚀 Azure Web App</div>
+        <ul class="nav-links">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/api/info">API</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Welcome to Azure App Service</h1>
+            <p class="subtitle">Your Node.js application is running successfully!</p>
+            
+            <div class="status-badge">
+                <span class="dot"></span>
+                <span>Online</span>
+            </div>
+        </section>
+
+        <section class="info-cards">
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>Environment</h3>
+                <p><%= environment %></p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🖥️</div>
+                <h3>Hostname</h3>
+                <p><%= hostname %></p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">⏰</div>
+                <h3>Server Time</h3>
+                <p id="serverTime"><%= serverTime %></p>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Features</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <h4>⚡ Fast & Scalable</h4>
+                    <p>Built on Node.js with Express for high performance</p>
+                </div>
+                <div class="feature">
+                    <h4>🔒 Secure</h4>
+                    <p>Deployed on Azure App Service with built-in security</p>
+                </div>
+                <div class="feature">
+                    <h4>📊 Health Monitoring</h4>
+                    <p>Built-in health and readiness endpoints</p>
+                </div>
+                <div class="feature">
+                    <h4>🔄 CI/CD Ready</h4>
+                    <p>Easy integration with Azure DevOps and GitHub Actions</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+            <div id="formMessage" class="form-message"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Azure Web App | Deployed on Azure App Service</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

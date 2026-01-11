@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🚀 Azure Web App</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about" class="active">About</a></li>
+            <li><a href="/api/info">API</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <h1>About This Application</h1>
+            <p class="subtitle">A modern web application deployed on Azure App Service</p>
+        </section>
+
+        <section class="about-content">
+            <div class="about-card">
+                <h2>Technology Stack</h2>
+                <ul class="tech-list">
+                    <li>🟢 Node.js - Runtime Environment</li>
+                    <li>⚡ Express.js - Web Framework</li>
+                    <li>📝 EJS - Template Engine</li>
+                    <li>☁️ Azure App Service - Hosting Platform</li>
+                </ul>
+            </div>
+
+            <div class="about-card">
+                <h2>API Endpoints</h2>
+                <table class="api-table">
+                    <thead>
+                        <tr>
+                            <th>Endpoint</th>
+                            <th>Method</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>/</code></td>
+                            <td>GET</td>
+                            <td>Home page</td>
+                        </tr>
+                        <tr>
+                            <td><code>/about</code></td>
+                            <td>GET</td>
+                            <td>About page</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/info</code></td>
+                            <td>GET</td>
+                            <td>Application info JSON</td>
+                        </tr>
+                        <tr>
+                            <td><code>/health</code></td>
+                            <td>GET</td>
+                            <td>Health check endpoint</td>
+                        </tr>
+                        <tr>
+                            <td><code>/ready</code></td>
+                            <td>GET</td>
+                            <td>Readiness check</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/contact</code></td>
+                            <td>POST</td>
+                            <td>Contact form submission</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Azure Web App | Deployed on Azure App Service</p>
+    </footer>
+</body>
+</html>
