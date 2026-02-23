@@ -1,1 +1,16 @@
+trigger:
+ branches:
+  include:
+     - master
+
+pool:
+ name: default
+
+stages:
+    - stage: Build
+      displayName: 'Build app'
+      jobs:
+          - job: Buildapp
+            displayName: 'BuildApp'
+            
 
