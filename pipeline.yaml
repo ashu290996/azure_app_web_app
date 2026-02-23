@@ -65,7 +65,7 @@ stages:
                 configMode: 'manual'
                 cliProjectKey: 'azure-web-app'
                 cliProjectName: 'azure-web-app'
-                cliSources: 'azure-web-app'
+                cliSources: '$(System.DefaultWorkingDirectory)'
                   
             - task: SonarQubeAnalyze@8
               displayName: 'SonarQubeAnalyze'
