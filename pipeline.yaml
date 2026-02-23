@@ -3,6 +3,30 @@ trigger:
   include:
      - master
 
+
+variables:
+  # Docker Registry
+  dockerRegistry: 'ashudevops'
+  imageName1: 'ashu290996/wonderlustfrontend'
+  imageName2: 'ashu290996/wonderlustbackened'
+  imageTag: '$(Build.BuildId)'
+  
+  # SonarQube
+  sonarQubeServiceConnection: 'sonarQube'
+  sonarProjectKey: 'azure-web-app'
+  
+  # Kubernetes
+  kubernetesServiceConnection: 'k8s-prod-connection'
+  stagingNamespace: 'staging'
+  productionNamespace: 'production'
+  
+  # Build
+  #vmImageName: 'ubuntu-latest'
+  
+  # Security Thresholds
+  trivySeverity: 'HIGH,CRITICAL'
+  owaspFailOnCVSS: 7
+
 pool:
  name: default
 
@@ -12,5 +36,55 @@ stages:
       jobs:
           - job: Buildapp
             displayName: 'BuildApp'
+            steps:
+
+              - task: NodeTool@0
+                inputs:
+                  versionSource: 'spec'
+                  versionSpec: '18.x'
+
+              - task: CmdLine@2
+                inputs:
+                  script: |
+                    npm install
+                    npm run build --if-present
+                    npm run test --if-present
+
+    - stage: SonarQube
+      displayName: 'SonarQube'
+      jobs:
+        - job: SonarPrepare
+          displayName: 'SonarPrepare'
+          steps:
+
+            - task: SonarQubePrepare@8
+              displayName: 'Prepare SonarQube Analysis'
+              inputs:
+                SonarQube: '$(sonarQubeServiceConnection)'
+                scannerMode: 'CLI'
+                configMode: 'manual'
+                cliProjectKey: 'azure-web-app'
+                cliProjectName: 'azure-web-app'
+                cliSources: 'azure-web-app'
+                  
+            - task: SonarQubeAnalyze@8
+              displayName: 'SonarQubeAnalyze'
+              inputs:
+                jdkversion: 'JAVA_HOME_21_X64'
+
+            - task: SonarQubePublish@8
+              displayName: 'SonarQubePublish'
+              continueOnError: false
+              inputs:
+                pollingTimeoutSec: '300'
+
+    # - stage: Deploy
+    #   displayName: 'deploy to app service'
+    #   jobs:
+    #     - job: Deploy
+    #       steps:
+    #         - 
+
+              
             
 
